@@ -9,15 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     
     <style>
+        /* Благородная палитра капучино и нежного бежа */
         :root {
-            --bg-color: #fcfaf6;
-            --text-dark: #434036;
-            --text-light: #726b5e;
-            --accent-gold: #b3976c;
-            --border-gold: #e6dcbc;
-            --font-title: 'Cormorant Garamond', serif;
-            --font-script: 'Great Vibes', cursive;
-            --font-main: 'Montserrat', sans-serif;
+            --bg-main: #f2e6d6;        /* Нежный кремовый беж / оттенок латте */
+            --bg-card: #fbf7f0;        /* Воздушная молочная пенка */
+            --text-main: #594a3f;      /* Насыщенный цвет капучино для текста */
+            --text-dark: #332419;      /* Глубокий кофейный для заголовков */
+            --accent: #c4b499;         /* Мягкий золотисто-ореховый тон */
+            --shadow-watercolor: rgba(89, 74, 63, 0.15);
         }
 
         * {
@@ -26,275 +25,157 @@
             padding: 0;
         }
 
-       body {
-    background-color: #f4ebd9; /* Нежный кремовый беж */
-    color: #4a3b32;            /* Глубокий кофейный / капучино для читаемости текста */
-    font-family: 'Georgia', serif;
-}
-
-/* Если у вас есть блоки или карточки, им можно задать цвет молочной пенки */
-.card, .block {
-    background-color: #fdfaf4; /* Светлый капучино/молочный */
-    border: 1px solid #dcd1bd;
-}
-        /* Тонкая двойная свадебная рамка из референса */
-        .page-border {
-            border: 1px solid var(--border-gold);
-            margin: 25px;
-            padding: 20px;
-            min-height: calc(100vh - 50px);
-            position: relative;
-            background-color: #fffefb;
-            box-shadow: inset 0 0 50px rgba(230, 220, 188, 0.15);
-        }
-
-        .page-border::before {
-            content: '';
-            position: absolute;
-            top: 6px; left: 6px; right: 6px; bottom: 6px;
-            border: 1px solid var(--border-gold);
-            opacity: 0.4;
-            pointer-events: none;
-        }
-
-        .container {
-            max-width: 650px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 35px 15px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Элегантные разделители */
-        .divider {
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            padding: 30px 15px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            margin: 25px auto;
-            width: 50%;
-        }
-        .divider::before, .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--border-gold), transparent);
-        }
-        .divider-heart {
-            color: var(--accent-gold);
-            font-size: 12px;
-            margin: 0 12px;
         }
 
-        .divider-pattern {
-            color: var(--border-gold);
-            font-size: 14px;
-            letter-spacing: 5px;
-            margin: 25px 0;
+        .invitation-card {
+            max-width: 550px;
+            width: 100%;
+            background-color: var(--bg-card);
+            border-radius: 30px;
+            padding: 50px 30px;
+            box-shadow: 0 20px 40px var(--shadow-watercolor);
+            border: 1px solid rgba(196, 180, 153, 0.4);
+            text-align: center;
         }
 
-        /* --- СЕКЦИЯ 1: Типографика как на фото --- */
-        .header-section {
-            padding-top: 45px;
-            padding-bottom: 20px;
-        }
-
-        .initials-main {
-            font-family: var(--font-title);
-            font-size: 4.2rem;
-            font-weight: 300;
-            letter-spacing: 8px;
-            color: var(--accent-gold);
-            margin-bottom: 5px;
-            text-transform: uppercase;
-        }
-
-        .names-full {
-            font-family: var(--font-script);
-            font-size: 2.6rem;
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
             color: var(--text-dark);
-            margin-bottom: 20px;
-        }
-
-        .invitation-word {
-            font-family: var(--font-title);
-            font-size: 2.4rem;
             font-weight: 400;
+        }
+
+        .names-title {
+            font-size: 38px;
+            line-height: 1.2;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .wedding-subtitle {
+            font-size: 16px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            letter-spacing: 9px;
-            color: var(--text-dark);
-            margin-bottom: 15px;
+            color: var(--accent);
+            font-weight: 400;
+            margin-bottom: 40px;
         }
 
-        .invitation-text {
-            font-family: var(--font-title);
-            font-size: 1.25rem;
-            font-style: italic;
-            color: var(--text-light);
-            max-width: 480px;
-            margin: 0 auto;
-        }
-
-        /* --- СЕКЦИЯ 2: Стилизация вашего фото под акварель --- */
-        .illustration-container {
-            max-width: 480px;
-            margin: 25px auto 35px auto;
+        /* Особое выделение для максимального акцента на акварели */
+        .watercolor-container {
             position: relative;
-        }
-
-        /* Маска, делающая края фотографии рваными и мягкими, как на бумаге */
-        .watercolor-wrapper {
-            position: relative;
-            overflow: hidden;
-            border-radius: 4px;
-            box-shadow: 0 12px 30px rgba(67, 64, 54, 0.06);
+            margin: 35px auto;
+            display: inline-block;
+            padding: 10px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(89, 74, 63, 0.18);
+            border: 1px solid rgba(196, 180, 153, 0.3);
         }
 
         .watercolor-img {
-            width: 100%;
+            max-width: 100%;
             height: auto;
             display: block;
-            /* Легкий теплый фильтр для гармонии с бежевым фоном */
-            filter: sepia(12%) contrast(98%) brightness(102%);
+            border-radius: 12px;
+            /* Настройки контраста и насыщенности, чтобы акварель была ярче и отчетливее */
+            filter: contrast(1.08) saturate(1.15);
         }
 
-        /* --- СЕКЦИЯ 3: Расписание --- */
-        .section-title {
-            font-family: var(--font-title);
-            font-size: 1.8rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            color: var(--accent-gold);
-            margin-bottom: 35px;
+        .intro-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-style: italic;
+            line-height: 1.4;
+            color: var(--text-dark);
+            margin: 30px 0;
+            padding: 0 10px;
         }
 
-        .timeline {
-            max-width: 500px;
-            margin: 0 auto;
-            position: relative;
+        /* Стилизация программы дня */
+        .program-section {
+            margin: 45px 0 35px;
         }
 
-        .timeline-item {
-            display: flex;
-            margin-bottom: 30px;
-            text-align: left;
-            align-items: flex-start;
+        .program-title {
+            font-size: 28px;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
         }
 
-        .timeline-time {
-            font-family: var(--font-title);
-            font-size: 1.35rem;
-            font-weight: 500;
-            color: var(--accent-gold);
-            min-width: 75px;
-            padding-right: 18px;
-            text-align: right;
-            border-right: 1px solid var(--border-gold);
-            position: relative;
-            line-height: 1.2;
-        }
-
-        .timeline-time::after {
+        .program-title::after {
             content: '';
-            position: absolute;
-            right: -4px;
-            top: 5px;
-            width: 7px;
-            height: 7px;
-            background-color: var(--accent-gold);
-            border-radius: 50%;
+            display: block;
+            width: 60px;
+            height: 1px;
+            background-color: var(--accent);
+            margin: 10px auto 0;
         }
 
-        .timeline-content {
-            padding-left: 20px;
+        .timeline-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(242, 230, 214, 0.4);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(196, 180, 153, 0.2);
+            text-align: left;
+            margin: 0 auto;
+            max-width: 460px;
         }
 
-        .timeline-content h4 {
-            font-family: var(--font-title);
-            font-size: 1.2rem;
-            font-weight: 400;
+        .time-badge {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 600;
             color: var(--text-dark);
+            padding-right: 20px;
+            margin-right: 20px;
+            border-right: 2px solid var(--accent);
+            line-height: 1;
+        }
+
+        .event-details h3 {
+            font-size: 18px;
+            font-weight: 600;
             margin-bottom: 4px;
+            line-height: 1.3;
         }
 
-        .timeline-content p {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            font-weight: 300;
+        .event-details p {
+            font-size: 13px;
+            color: var(--text-main);
+            line-height: 1.4;
         }
 
-        /* --- СЕКЦИЯ 4: Локация --- */
-        .location-section {
-            background-color: #fffefc;
-            padding: 40px 20px;
-            border-radius: 4px;
-            border: 1px solid rgba(230, 220, 188, 0.5);
-            margin-top: 25px;
-            box-shadow: 0 5px 15px rgba(230, 220, 188, 0.1);
+        /* Нежный финальный блок для подтверждения присутствия */
+        .rsvp-container {
+            background-color: #e4d5be; /* Чуть более глубокий бежевый фон капучино */
+            padding: 30px 25px;
+            border-radius: 20px;
+            margin-top: 50px;
+            border: 1px dashed var(--accent);
+            box-shadow: inset 0 0 15px rgba(251, 247, 240, 0.5);
         }
 
-        .location-icon {
-            font-size: 20px;
-            color: var(--accent-gold);
-            margin-bottom: 12px;
-        }
-
-        .restaurant-name {
-            font-family: var(--font-title);
-            font-size: 1.5rem;
-            font-weight: 400;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-        }
-
-        .address-text {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            max-width: 400px;
-            margin: 0 auto 20px auto;
-            font-weight: 300;
-        }
-
-        .map-button {
-            display: inline-block;
-            padding: 10px 28px;
-            border: 1px solid var(--accent-gold);
-            background: transparent;
+        .rsvp-message {
+            font-size: 15px;
+            line-height: 1.6;
             color: var(--text-dark);
-            text-decoration: none;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
         }
 
-        .map-button:hover {
-            background-color: var(--accent-gold);
-            color: #fff;
-        }
-
-        /* Растительный декор по углам */
-        .leaf-decor {
-            position: absolute;
-            opacity: 0.15;
-            pointer-events: none;
-            z-index: 1;
-            font-size: 4.5rem;
-        }
-        .decor-top-right { top: 15px; right: 20px; transform: rotate(45deg); }
-        .decor-bottom-left { bottom: 15px; left: 20px; transform: rotate(-135deg); }
-
-        @media (max-width: 600px) {
-            .page-border { margin: 12px; padding: 10px; min-height: calc(100vh - 24px); }
-            .initials-main { font-size: 3rem; letter-spacing: 5px; }
-            .names-full { font-size: 2.1rem; }
-            .invitation-word { font-size: 1.8rem; letter-spacing: 5px; }
-            .timeline-item { flex-direction: column; text-align: center; align-items: center; margin-bottom: 25px; }
-            .timeline-time { text-align: center; padding-right: 0; border-right: none; margin-bottom: 4px; min-width: auto; }
-            .timeline-time::after { display: none; }
-            .timeline-content { padding-left: 0; }
-            .leaf-decor { display: none; }
+        .rsvp-message strong {
+            color: #21140a; /* Выделение глубоким кофейным цветом */
+            font-weight: 600;
         }
     </style>
 </head>
