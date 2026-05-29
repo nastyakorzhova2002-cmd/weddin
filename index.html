@@ -6,15 +6,15 @@
     <title>Приглашение на свадьбу | O & A</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #fbf9f5;
-            --text-dark: #4a473e;
-            --text-light: #7c7569;
-            --accent-gold: #c3a475;
-            --border-gold: #dfd3bd;
+            --bg-color: #fcfaf6;
+            --text-dark: #434036;
+            --text-light: #726b5e;
+            --accent-gold: #b3976c;
+            --border-gold: #e6dcbc;
             --font-title: 'Cormorant Garamond', serif;
             --font-script: 'Great Vibes', cursive;
             --font-main: 'Montserrat', sans-serif;
@@ -30,43 +30,47 @@
             background-color: var(--bg-color);
             color: var(--text-dark);
             font-family: var(--font-main);
-            font-size: 16px;
+            font-size: 15px;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
+        /* Тонкая двойная свадебная рамка из референса */
         .page-border {
             border: 1px solid var(--border-gold);
-            margin: 20px;
+            margin: 25px;
             padding: 20px;
-            min-height: calc(100vh - 40px);
+            min-height: calc(100vh - 50px);
             position: relative;
-            background-color: #fffdfa;
-            box-shadow: inset 0 0 40px rgba(223, 211, 189, 0.2);
+            background-color: #fffefb;
+            box-shadow: inset 0 0 50px rgba(230, 220, 188, 0.15);
         }
 
         .page-border::before {
             content: '';
             position: absolute;
-            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            top: 6px; left: 6px; right: 6px; bottom: 6px;
             border: 1px solid var(--border-gold);
-            opacity: 0.5;
+            opacity: 0.4;
             pointer-events: none;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 650px;
             margin: 0 auto;
             text-align: center;
-            padding: 40px 20px;
+            padding: 35px 15px;
+            position: relative;
+            z-index: 2;
         }
 
+        /* Элегантные разделители */
         .divider {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 30px auto;
-            width: 60%;
+            margin: 25px auto;
+            width: 50%;
         }
         .divider::before, .divider::after {
             content: '';
@@ -76,174 +80,188 @@
         }
         .divider-heart {
             color: var(--accent-gold);
+            font-size: 12px;
+            margin: 0 12px;
+        }
+
+        .divider-pattern {
+            color: var(--border-gold);
             font-size: 14px;
-            margin: 0 15px;
+            letter-spacing: 5px;
+            margin: 25px 0;
         }
 
-        .divider-diamond {
-            color: var(--accent-gold);
-            font-size: 18px;
-            margin: 30px 0;
-        }
-
-        /* --- СЕКЦИЯ 1: Инициалы --- */
+        /* --- СЕКЦИЯ 1: Типографика как на фото --- */
         .header-section {
-            padding-top: 60px;
-            padding-bottom: 40px;
+            padding-top: 45px;
+            padding-bottom: 20px;
         }
 
         .initials-main {
             font-family: var(--font-title);
-            font-size: 4.5rem;
+            font-size: 4.2rem;
             font-weight: 300;
-            letter-spacing: 5px;
+            letter-spacing: 8px;
             color: var(--accent-gold);
             margin-bottom: 5px;
+            text-transform: uppercase;
         }
 
         .names-full {
             font-family: var(--font-script);
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             color: var(--text-dark);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .invitation-word {
             font-family: var(--font-title);
-            font-size: 2.2rem;
+            font-size: 2.4rem;
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 7px;
+            letter-spacing: 9px;
             color: var(--text-dark);
             margin-bottom: 15px;
         }
 
         .invitation-text {
             font-family: var(--font-title);
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-style: italic;
             color: var(--text-light);
-            max-width: 500px;
+            max-width: 480px;
             margin: 0 auto;
         }
 
-        /* --- СЕКЦИЯ 2: Фотография ресторана --- */
+        /* --- СЕКЦИЯ 2: Стилизация вашего фото под акварель --- */
         .illustration-container {
-            max-width: 550px;
-            margin: 40px auto;
+            max-width: 480px;
+            margin: 25px auto 35px auto;
             position: relative;
-            padding: 10px;
+        }
+
+        /* Маска, делающая края фотографии рваными и мягкими, как на бумаге */
+        .watercolor-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 12px 30px rgba(67, 64, 54, 0.06);
         }
 
         .watercolor-img {
             width: 100%;
             height: auto;
-            border-radius: 8px;
-            box-shadow: 0 15px 35px rgba(195, 164, 117, 0.15);
-            border: 1px solid rgba(223, 211, 189, 0.4);
+            display: block;
+            /* Легкий теплый фильтр для гармонии с бежевым фоном */
+            filter: sepia(12%) contrast(98%) brightness(102%);
         }
 
-        /* --- СЕКЦИЯ 3: Тайминг --- */
+        /* --- СЕКЦИЯ 3: Расписание --- */
         .section-title {
             font-family: var(--font-title);
-            font-size: 2rem;
+            font-size: 1.8rem;
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             color: var(--accent-gold);
-            margin-bottom: 40px;
+            margin-bottom: 35px;
         }
 
         .timeline {
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto;
             position: relative;
-            padding: 20px 0;
         }
 
         .timeline-item {
             display: flex;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             text-align: left;
             align-items: flex-start;
         }
 
         .timeline-time {
             font-family: var(--font-title);
-            font-size: 1.4rem;
-            font-weight: 600;
+            font-size: 1.35rem;
+            font-weight: 500;
             color: var(--accent-gold);
-            min-width: 80px;
-            padding-right: 20px;
+            min-width: 75px;
+            padding-right: 18px;
             text-align: right;
             border-right: 1px solid var(--border-gold);
             position: relative;
+            line-height: 1.2;
         }
 
         .timeline-time::after {
             content: '';
             position: absolute;
-            right: -5px;
-            top: 8px;
-            width: 9px;
-            height: 9px;
+            right: -4px;
+            top: 5px;
+            width: 7px;
+            height: 7px;
             background-color: var(--accent-gold);
             border-radius: 50%;
         }
 
         .timeline-content {
-            padding-left: 25px;
+            padding-left: 20px;
         }
 
         .timeline-content h4 {
             font-family: var(--font-title);
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 400;
             color: var(--text-dark);
-            margin-bottom: 3px;
+            margin-bottom: 4px;
         }
 
         .timeline-content p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-light);
+            font-weight: 300;
         }
 
-        /* --- СЕКЦИЯ 4: Место проведения --- */
+        /* --- СЕКЦИЯ 4: Локация --- */
         .location-section {
-            background-color: #faf6f0;
-            padding: 50px 20px;
-            border-radius: 2px;
-            border: 1px dashed var(--border-gold);
-            margin-top: 40px;
-            margin-bottom: 40px;
+            background-color: #fffefc;
+            padding: 40px 20px;
+            border-radius: 4px;
+            border: 1px solid rgba(230, 220, 188, 0.5);
+            margin-top: 25px;
+            box-shadow: 0 5px 15px rgba(230, 220, 188, 0.1);
         }
 
         .location-icon {
-            font-size: 24px;
+            font-size: 20px;
             color: var(--accent-gold);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .restaurant-name {
             font-family: var(--font-title);
-            font-size: 1.6rem;
+            font-size: 1.5rem;
+            font-weight: 400;
             letter-spacing: 2px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .address-text {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-light);
-            max-width: 450px;
-            margin: 0 auto 25px auto;
+            max-width: 400px;
+            margin: 0 auto 20px auto;
+            font-weight: 300;
         }
 
         .map-button {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 10px 28px;
             border: 1px solid var(--accent-gold);
             background: transparent;
             color: var(--text-dark);
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             transition: all 0.3s ease;
@@ -254,26 +272,27 @@
             color: #fff;
         }
 
-        .flower-decor {
+        /* Растительный декор по углам */
+        .leaf-decor {
             position: absolute;
-            opacity: 0.12;
+            opacity: 0.15;
             pointer-events: none;
-            z-index: 0;
-            font-family: var(--font-script);
+            z-index: 1;
+            font-size: 4.5rem;
         }
-        .decor-top-right { top: 20px; right: 30px; font-size: 6rem; }
-        .decor-bottom-left { bottom: 20px; left: 30px; font-size: 6rem; }
+        .decor-top-right { top: 15px; right: 20px; transform: rotate(45deg); }
+        .decor-bottom-left { bottom: 15px; left: 20px; transform: rotate(-135deg); }
 
         @media (max-width: 600px) {
-            .page-border { margin: 10px; padding: 10px; }
-            .initials-main { font-size: 3.2rem; }
-            .names-full { font-size: 2.2rem; }
-            .invitation-word { font-size: 1.8rem; letter-spacing: 4px; }
-            .timeline-item { flex-direction: column; text-align: center; align-items: center; margin-bottom: 30px;}
-            .timeline-time { text-align: center; padding-right: 0; border-right: none; margin-bottom: 5px;}
+            .page-border { margin: 12px; padding: 10px; min-height: calc(100vh - 24px); }
+            .initials-main { font-size: 3rem; letter-spacing: 5px; }
+            .names-full { font-size: 2.1rem; }
+            .invitation-word { font-size: 1.8rem; letter-spacing: 5px; }
+            .timeline-item { flex-direction: column; text-align: center; align-items: center; margin-bottom: 25px; }
+            .timeline-time { text-align: center; padding-right: 0; border-right: none; margin-bottom: 4px; min-width: auto; }
             .timeline-time::after { display: none; }
             .timeline-content { padding-left: 0; }
-            .decor-top-right, .decor-bottom-left { display: none; }
+            .leaf-decor { display: none; }
         }
     </style>
 </head>
@@ -281,8 +300,8 @@
 
     <div class="page-border">
         
-        <div class="flower-decor decor-top-right">🌿</div>
-        <div class="flower-decor decor-bottom-left">🌿</div>
+        <div class="leaf-decor decor-top-right">🌿</div>
+        <div class="leaf-decor decor-bottom-left">🌿</div>
 
         <header class="container header-section">
             <div class="initials-main">O & A</div>
@@ -293,12 +312,14 @@
             </div>
             
             <h1 class="invitation-word">Приглашение</h1>
-            <p class="invitation-text">Рады пригласить вас на наш праздничный ужин и свадебные торжества</p>
+            <p class="invitation-text">Приглашаем вас на наш праздничный ужин и свадебные торжества</p>
         </header>
 
-        <div class="container" style="padding-top: 0; padding-bottom: 0;">
+        <div class="container" style="padding-top: 0; padding-bottom: 10px;">
             <div class="illustration-container">
-                <img src="restaurant.jpg" alt="Ресторан La Delizia" class="watercolor-img">
+                <div class="watercolor-wrapper">
+                    <img src="restaurant.jpg" alt="Ресторан La Delizia" class="watercolor-img">
+                </div>
             </div>
         </div>
 
@@ -310,8 +331,8 @@
                 <div class="timeline-item">
                     <div class="timeline-time">13:35</div>
                     <div class="timeline-content">
-                        <h4>Сбор гостей</h4>
-                        <p>В церкви по адресу: Олимпийский проспект, д. 9</p>
+                        <h4>Сбор гостей в церкви</h4>
+                        <p>Ждем вас по адресу: г. Москва, Олимпийский проспект, д. 9</p>
                     </div>
                 </div>
 
@@ -319,7 +340,7 @@
                     <div class="timeline-time">14:00</div>
                     <div class="timeline-content">
                         <h4>Церемония Венчания</h4>
-                        <p>Таинство создания нашей семьи, а также памятная фотосессия с гостями</p>
+                        <p>Начало таинства создания нашей семьи и памятная фотосессия</p>
                     </div>
                 </div>
 
@@ -327,7 +348,7 @@
                     <div class="timeline-time">16:30</div>
                     <div class="timeline-content">
                         <h4>Фуршет</h4>
-                        <p>Приветственные напитки, легкие закуски и теплая атмосфера в ресторане</p>
+                        <p>Встреча гостей в ресторане, приветственные напитки и легкие закуски</p>
                     </div>
                 </div>
 
@@ -335,7 +356,7 @@
                     <div class="timeline-time">17:00</div>
                     <div class="timeline-content">
                         <h4>Начало банкета</h4>
-                        <p>Праздничный ужин, поздравления, развлекательная программа</p>
+                        <p>Праздничный ужин, приятные поздравления и торжественная программа</p>
                     </div>
                 </div>
 
@@ -343,20 +364,20 @@
                     <div class="timeline-time">00:30</div>
                     <div class="timeline-content">
                         <h4>Окончание вечера</h4>
-                        <p>Завершение праздничного торжества</p>
+                        <p>Завершение нашего свадебного праздника</p>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <div class="divider-diamond">✦ ✦ ✦</div>
+        <div class="divider-pattern">⚜ ⚜ ⚜</div>
 
-        <section class="container" style="padding-top: 0;">
+        <section class="container" style="padding-top: 0; padding-bottom: 25px;">
             <div class="location-section">
                 <div class="location-icon">📍</div>
                 <h3 class="restaurant-name">Ресторан «La Delizia»</h3>
-                <p class="address-text">г. Домодедово, Объездное шоссе, строение 7<br><small style="opacity: 0.7;">(Парк культуры и отдыха «Ёлочки»)</small></p>
+                <p class="address-text">г. Домодедово, Объездное шоссе, строение 7<br><small style="opacity: 0.6; font-size: 0.8rem;">(Территория парка «Ёлочки»)</small></p>
                 
                 <a href="https://yandex.ru/maps/?text=Ресторан+La+Delizia+Домодедово+Объездное+шоссе+7" target="_blank" class="map-button">Открыть карту</a>
             </div>
