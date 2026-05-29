@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -8,176 +9,185 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     
-    <style>
-        /* Благородная палитра капучино и нежного бежа */
-        :root {
-            --bg-main: #f2e6d6;        /* Нежный кремовый беж / оттенок латте */
-            --bg-card: #fbf7f0;        /* Воздушная молочная пенка */
-            --text-main: #594a3f;      /* Насыщенный цвет капучино для текста */
-            --text-dark: #332419;      /* Глубокий кофейный для заголовков */
-            --accent: #c4b499;         /* Мягкий золотисто-ореховый тон */
-            --shadow-watercolor: rgba(89, 74, 63, 0.15);
-        }
+<style>
+.location-wrapper {
+    padding-top: 0;
+    padding-bottom: 120px;
+}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+.location-section {
+    position: relative;
+    overflow: hidden;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 70px 40px;
+    border-radius: 40px;
 
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            padding: 30px 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    /* Фон молочной пенки / нежного латте */
+    background: linear-gradient(
+        145deg,
+        rgba(253, 250, 244, 0.95),
+        rgba(244, 235, 217, 0.9)
+    );
 
-        .invitation-card {
-            max-width: 550px;
-            width: 100%;
-            background-color: var(--bg-card);
-            border-radius: 30px;
-            padding: 50px 30px;
-            box-shadow: 0 20px 40px var(--shadow-watercolor);
-            border: 1px solid rgba(196, 180, 153, 0.4);
-            text-align: center;
-        }
+    /* Мягкая бежево-ореховая рамка вместо яркого золота */
+    border: 1px solid rgba(196, 180, 153, 0.4);
 
-        h1, h2, h3 {
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--text-dark);
-            font-weight: 400;
-        }
+    box-shadow:
+        0 15px 40px rgba(89, 74, 63, 0.1),
+        0 0 0 1px rgba(255,255,255,0.4) inset;
 
-        .names-title {
-            font-size: 38px;
-            line-height: 1.2;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-        }
+    text-align: center;
+    backdrop-filter: blur(20px);
 
-        .wedding-subtitle {
-            font-size: 16px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--accent);
-            font-weight: 400;
-            margin-bottom: 40px;
-        }
+    /* Плавное выплывание при загрузке/скролле */
+    animation: floatUpLocation 1.5s ease-out forwards;
+    opacity: 0; 
+}
 
-        /* Особое выделение для максимального акцента на акварели */
-        .watercolor-container {
-            position: relative;
-            margin: 35px auto;
-            display: inline-block;
-            padding: 10px;
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 12px 30px rgba(89, 74, 63, 0.18);
-            border: 1px solid rgba(196, 180, 153, 0.3);
-        }
+/* Мягкое кофейное свечение на заднем фоне */
+.location-glow {
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: rgba(196, 180, 153, 0.2);
+    filter: blur(60px);
+}
 
-        .watercolor-img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 12px;
-            /* Настройки контраста и насыщенности, чтобы акварель была ярче и отчетливее */
-            filter: contrast(1.08) saturate(1.15);
-        }
+/* Иконка в глубоких тонах капучино */
+.location-icon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 
-        .intro-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
-            font-style: italic;
-            line-height: 1.4;
-            color: var(--text-dark);
-            margin: 30px 0;
-            padding: 0 10px;
-        }
+    background: linear-gradient(
+        135deg,
+        #594a3f,  /* Капучино */
+        #c4b499   /* Ореховый беж */
+    );
 
-        /* Стилизация программы дня */
-        .program-section {
-            margin: 45px 0 35px;
-        }
+    color: white;
+    font-size: 34px;
 
-        .program-title {
-            font-size: 28px;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-        }
+    box-shadow: 0 10px 25px rgba(89, 74, 63, 0.25);
+}
 
-        .program-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 1px;
-            background-color: var(--accent);
-            margin: 10px auto 0;
-        }
+.location-subtitle {
+    margin-bottom: 12px;
+    font-size: 12px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #c4b499; /* Мягкий беж */
+}
 
-        .timeline-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(242, 230, 214, 0.4);
-            padding: 20px;
-            border-radius: 16px;
-            border: 1px solid rgba(196, 180, 153, 0.2);
-            text-align: left;
-            margin: 0 auto;
-            max-width: 460px;
-        }
+/* Название ресторана в цвете темного шоколада */
+.restaurant-name {
+    margin-bottom: 22px;
+    font-family: 'Cormorant Garamond', serif; /* Свадебный изящный шрифт */
+    font-size: clamp(38px, 5vw, 58px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: #332419; 
+}
 
-        .time-badge {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
-            font-weight: 600;
-            color: var(--text-dark);
-            padding-right: 20px;
-            margin-right: 20px;
-            border-right: 2px solid var(--accent);
-            line-height: 1;
-        }
+/* Элегантный разделитель */
+.divider {
+    width: 90px;
+    height: 2px;
+    margin: 0 auto 30px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #c4b499,
+        transparent
+    );
+}
 
-        .event-details h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 4px;
-            line-height: 1.3;
-        }
+.address-text {
+    margin-bottom: 14px;
+    font-size: 24px;
+    line-height: 1.7;
+    color: #594a3f;
+}
 
-        .event-details p {
-            font-size: 13px;
-            color: var(--text-main);
-            line-height: 1.4;
-        }
+.location-note {
+    margin-bottom: 40px;
+    font-size: 16px;
+    color: rgba(89, 74, 63, 0.7);
+}
 
-        /* Нежный финальный блок для подтверждения присутствия */
-        .rsvp-container {
-            background-color: #e4d5be; /* Чуть более глубокий бежевый фон капучино */
-            padding: 30px 25px;
-            border-radius: 20px;
-            margin-top: 50px;
-            border: 1px dashed var(--accent);
-            box-shadow: inset 0 0 15px rgba(251, 247, 240, 0.5);
-        }
+/* Кнопка карты в кофейно-бежевом стиле */
+.map-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 38px;
+    border-radius: 999px;
 
-        .rsvp-message {
-            font-size: 15px;
-            line-height: 1.6;
-            color: var(--text-dark);
-        }
+    background: linear-gradient(
+        135deg,
+        #594a3f,
+        #736152
+    );
 
-        .rsvp-message strong {
-            color: #21140a; /* Выделение глубоким кофейным цветом */
-            font-weight: 600;
-        }
-    </style>
+    color: #fbf7f0; /* Светлый текст на темной кнопке */
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.map-button:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow:
+        0 15px 35px rgba(89, 74, 63, 0.3),
+        0 0 30px rgba(196, 180, 153, 0.2);
+}
+
+.map-button:active {
+    transform: scale(0.98);
+}
+
+/* Эффект выплывания карточки */
+@keyframes floatUpLocation {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .location-section {
+        padding: 50px 24px;
+        border-radius: 30px;
+    }
+
+    .restaurant-name {
+        font-size: 42px;
+    }
+
+    .address-text {
+        font-size: 20px;
+    }
+
+    .map-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+</style>
 </head>
 <body>
 
@@ -261,10 +271,7 @@
         </section>
 
     </div>
-<div style="background-color: #ebe0cc; padding: 40px 20px; text-align: center; border-radius: 12px; margin: 40px auto; max-width: 600px; border: 1px dashed #bfae93;">
-    <p style="font-size: 18px; line-height: 1.6; color: #4a3b32; margin: 0;">
-        Пожалуйста, <strong style="color: #2b1f17; font-weight: bold;">подтвердите ваше присутствие</strong> на нашем празднике в ближайшее время любым удобным для Вас способом.
-    </p>
-</div>
+
 </body>
 </html>
+
