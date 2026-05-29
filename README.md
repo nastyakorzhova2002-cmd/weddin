@@ -1,4 +1,4 @@
-[wedding-invitation 2.html](https://github.com/user-attachments/files/28409638/wedding-invitation.2.html)
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
