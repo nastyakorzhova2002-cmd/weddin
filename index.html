@@ -1,0 +1,395 @@
+Чтобы фотография вашего ресторана отображалась на сайте, её нужно сначала загрузить в интернет, чтобы у неё появилась ссылка (прямой URL-адрес).
+
+Так как ваш сайт создается на **GitHub**, самым правильным и надежным решением будет загрузить это фото прямо туда же, в ваш репозиторий `weddin`!
+
+Вот как это сделать за пару шагов, и готовый обновленный код:
+
+### Шаг 1. Загрузите фото на GitHub
+
+1. Откройте ваш репозиторий **`weddin`** на GitHub.
+2. В правом верхнем углу (над списком файлов) нажмите кнопку **Add file** ➔ **Upload files** (Загрузить файлы).
+3. Перетащите туда вашу фотографию ресторана со своего компьютера или телефона.
+4. Переименуйте файл так, чтобы имя было простым и на английском, например: **`restaurant.jpg`** (это очень важно, чтобы код его нашёл).
+5. Нажмите зеленую кнопку **Commit changes** внизу, чтобы сохранить.
+
+---
+
+### Шаг 2. Обновите код в файле `index.html`
+
+Теперь замените ваш старый код на этот обновленный вариант. В нём я прописал путь к вашему загруженному изображению `restaurant.jpg` и добавил ему красивую нежную рамку с размытыми краями, чтобы фотография идеально вписалась в общую акварельную стилистику приглашения:
+
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на свадьбу | O & A</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fbf9f5;
+            --text-dark: #4a473e;
+            --text-light: #7c7569;
+            --accent-gold: #c3a475;
+            --border-gold: #dfd3bd;
+            --font-title: 'Cormorant Garamond', serif;
+            --font-script: 'Great Vibes', cursive;
+            --font-main: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-family: var(--font-main);
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .page-border {
+            border: 1px solid var(--border-gold);
+            margin: 20px;
+            padding: 20px;
+            min-height: calc(100vh - 40px);
+            position: relative;
+            background-color: #fffdfa;
+            box-shadow: inset 0 0 40px rgba(223, 211, 189, 0.2);
+        }
+
+        .page-border::before {
+            content: '';
+            position: absolute;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border: 1px solid var(--border-gold);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px auto;
+            width: 60%;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border-gold), transparent);
+        }
+        .divider-heart {
+            color: var(--accent-gold);
+            font-size: 14px;
+            margin: 0 15px;
+        }
+
+        .divider-diamond {
+            color: var(--accent-gold);
+            font-size: 18px;
+            margin: 30px 0;
+        }
+
+        /* --- СЕКЦИЯ 1: Инициалы --- */
+        .header-section {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+
+        .initials-main {
+            font-family: var(--font-title);
+            font-size: 4.5rem;
+            font-weight: 300;
+            letter-spacing: 5px;
+            color: var(--accent-gold);
+            margin-bottom: 5px;
+        }
+
+        .names-full {
+            font-family: var(--font-script);
+            font-size: 2.8rem;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+        }
+
+        .invitation-word {
+            font-family: var(--font-title);
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 7px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .invitation-text {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-light);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* --- СЕКЦИЯ 2: Фотография ресторана --- */
+        .illustration-container {
+            max-width: 550px;
+            margin: 40px auto;
+            position: relative;
+            padding: 10px;
+        }
+
+        /* Стилизация фото под мягкую акварельную открытку */
+        .watercolor-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(195, 164, 117, 0.15);
+            border: 1px solid rgba(223, 211, 189, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        /* --- СЕКЦИЯ 3: Тайминг --- */
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
+            margin-bottom: 40px;
+        }
+
+        .timeline {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 35px;
+            text-align: left;
+            align-items: flex-start;
+        }
+
+        .timeline-time {
+            font-family: var(--font-title);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            min-width: 80px;
+            padding-right: 20px;
+            text-align: right;
+            border-right: 1px solid var(--border-gold);
+            position: relative;
+        }
+
+        .timeline-time::after {
+            content: '';
+            position: absolute;
+            right: -5px;
+            top: 8px;
+            width: 9px;
+            height: 9px;
+            background-color: var(--accent-gold);
+            border-radius: 50%;
+        }
+
+        .timeline-content {
+            padding-left: 25px;
+        }
+
+        .timeline-content h4 {
+            font-family: var(--font-title);
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--text-dark);
+            margin-bottom: 3px;
+        }
+
+        .timeline-content p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* --- СЕКЦИЯ 4: Место проведения --- */
+        .location-section {
+            background-color: #faf6f0;
+            padding: 50px 20px;
+            border-radius: 2px;
+            border: 1px dashed var(--border-gold);
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .location-icon {
+            font-size: 24px;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        .restaurant-name {
+            font-family: var(--font-title);
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .address-text {
+            font-size: 1rem;
+            color: var(--text-light);
+            max-width: 450px;
+            margin: 0 auto 25px auto;
+        }
+
+        .map-button {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 1px solid var(--accent-gold);
+            background: transparent;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .map-button:hover {
+            background-color: var(--accent-gold);
+            color: #fff;
+        }
+
+        .flower-decor {
+            position: absolute;
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 0;
+            font-family: var(--font-script);
+        }
+        .decor-top-right { top: 20px; right: 30px; font-size: 6rem; }
+        .decor-bottom-left { bottom: 20px; left: 30px; font-size: 6rem; }
+
+        @media (max-width: 600px) {
+            .page-border { margin: 10px; padding: 10px; }
+            .initials-main { font-size: 3.2rem; }
+            .names-full { font-size: 2.2rem; }
+            .invitation-word { font-size: 1.8rem; letter-spacing: 4px; }
+            .timeline-item { flex-direction: column; text-align: center; align-items: center; margin-bottom: 30px;}
+            .timeline-time { text-align: center; padding-right: 0; border-right: none; margin-bottom: 5px;}
+            .timeline-time::after { display: none; }
+            .timeline-content { padding-left: 0; }
+            .decor-top-right, .decor-bottom-left { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-border">
+        
+        <div class="flower-decor decor-top-right">🌿</div>
+        <div class="flower-decor decor-bottom-left">🌿</div>
+
+        <header class="container header-section">
+            <div class="initials-main">O & A</div>
+            <div class="names-full">Ogen & Anastasia</div>
+            
+            <div class="divider">
+                <span class="divider-heart">♥</span>
+            </div>
+            
+            <h1 class="invitation-word">Приглашение</h1>
+            <p class="invitation-text">Рады пригласить вас на наш праздничный ужин и свадебные торжества</p>
+        </header>
+
+        <div class="container" style="padding-top: 0; padding-bottom: 0;">
+            <div class="illustration-container">
+                <img src="restaurant.jpg" alt="Ресторан La Delizia" class="watercolor-img">
+            </div>
+        </div>
+
+        <section class="container">
+            <h2 class="section-title">Программа дня</h2>
+            
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-time">13:35</div>
+                    <div class="timeline-content">
+                        <h4>Сбор гостей</h4>
+                        <p>В церкви по адресу: Олимпийский проспект, д. 9</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">14:00</div>
+                    <div class="timeline-content">
+                        <h4>Церемония Венчания</h4>
+                        <p>Таинство создания нашей семьи, а также памятная фотосессия с гостями</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">16:30</div>
+                    <div class="timeline-content">
+                        <h4>Фуршет</h4>
+                        <p>Приветственные напитки, легкие закуски и теплая атмосфера в ресторане</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">17:00</div>
+                    <div class="timeline-content">
+                        <h4>Начало банкета</h4>
+                        <p>Праздничный ужин, поздравления, развлекательная программа</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">00:30</div>
+                    <div class="timeline-content">
+                        <h4>Окончание вечера</h4>
+                        <p>Завершение праздничного торжества</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="divider-diamond">✦ ✦ ✦</div>
+
+        <section class="container" style="padding-top: 0;">
+            <div class="location-section">
+                <div class="location-icon">📍</div>
+                <h3 class="restaurant-name">Ресторан «La Delizia»</h3>
+                <p class="address-text">г. Домодедово, Объездное шоссе, строение 7<br><small style="opacity: 0.7;">(Парк культуры и отдыха «Ёлочки»)</small></p>
+                
+                <a href="https://yandex.ru/maps/?text=Ресторан+La+Delizia+Домодедово+Объездное+шоссе+7" target="_blank" class="map-button">Открыть карту</a>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
+
+```
+
+*Примечание: Если вы назвали фотографию по-другому (например, `photo.png`), просто замените значение в коде в строке `<img src="restaurant.jpg"...>` на ваше название.*
